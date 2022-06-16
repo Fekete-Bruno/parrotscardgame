@@ -15,6 +15,14 @@ header{
     color: rgba(117, 183, 158, 1);
     text-align: center;
 }
+footer{
+    margin:20px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    color: rgba(117, 183, 158, 1);
+    text-align: center;
+}
 .game-board{
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +39,12 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
+    transition: transform .5s;
 }
+.card.front {
+    transform: rotateY(180deg);
+  }
 .card img{
     width: 100px;
 }

@@ -1,4 +1,4 @@
-const cards = [ ".bobross",".bobross",
+const cardDeck = [".bobross",".bobross",
                 ".explody",".explody",
                 ".fiesta",".fiesta",
                 ".metal",".metal",
@@ -7,9 +7,10 @@ const cards = [ ".bobross",".bobross",
                 ".triplets",".triplets",
                 ".unicorn",".unicorn"                                     
             ];
-
-
-
+const cards = [];
+let score = 0;
+let card1;
+let card2;
 
 
 let amount;
@@ -19,37 +20,25 @@ function gameStarter(){
     }
     let ul = document.querySelector(".game-board");
     ul.innerHTML = '';
-    for ( let i = 1; i <= amount ; i++ ){
-        console.log(`Criando carta: ${i}`);
-        ul.innerHTML += `   <div class="card">
+    for ( let i = 0; i < amount ; i++ ){
+        console.log(`Criando carta: ${i+1}`);
+        ul.innerHTML += `   <div class="card" onclick="turn(this);">
                                 <img src="./assets/front.png" alt="">
                             </div>
-
-                        `
+                        `;
+        cards.push(cardDeck[i])
     }
-
-
-
+    console.log(cards); // Log unshuffled array
+    cards.sort(compareCards); // Array shuffle
     alert('Game Start!');
 }
 
-
-
-
-
-
-
-
-
-
-
-cards.sort(compareCards); // Array shuffle
-
-
-
-
-
-
+// Turning cards
+function turn (card) {
+    card.classList.add("front");
+    score++;
+    console.log(`Score: ${score}`)
+ }
 
 // Array sort
 function compareCards() { 
