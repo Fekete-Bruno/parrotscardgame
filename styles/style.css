@@ -2,4 +2,49 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EEf9BF;
 }   
+header{
+    margin:20px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    color: rgba(117, 183, 158, 1);
+    text-align: center;
+}
+.game-content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin:20px
+}
+.card{
+    background-color: rgba(167, 233, 175, 1);
+    width:120px;
+    height:150px;
+    margin: 20px;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card img{
+    width: 100px;
+}
+
+@media screen and (min-width:768px) {
+    header{
+        font-size: 56px;
+        line-height: 66px;
+    }
+    .game-content{
+        width:80%;
+        flex-direction:row;
+        justify-content: center;
+    }
+
+}
