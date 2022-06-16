@@ -15,7 +15,7 @@ header{
     color: rgba(117, 183, 158, 1);
     text-align: center;
 }
-.game-content{
+.game-board{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -41,8 +41,8 @@ header{
         font-size: 56px;
         line-height: 66px;
     }
-    .game-content{
-        width:80%;
+    .game-board{
+        width:90%;
         flex-direction:row;
         justify-content: center;
     }
