@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 body{
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
@@ -40,15 +41,27 @@ footer{
     align-items: center;
     justify-content: center;
     cursor:pointer;
-    transition: transform .5s;
+    transition: all .5s;
+}
+.card :nth-child(2){
+    display: none;
 }
 .card.front {
     transform: rotateY(180deg);
   }
+
+.card.front :nth-child(2){
+    display: inline;
+  }
+.card.front :nth-child(1){
+    display: none;
+}
 .card img{
     width: 100px;
 }
-
+.hidden{
+    display: none;
+}
 @media screen and (min-width:768px) {
     header{
         font-size: 56px;
