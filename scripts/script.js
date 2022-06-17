@@ -47,9 +47,18 @@ function gameStarter(){
 // Turning cards
 function turn (card) { 
     card.classList.add("front");
+    checkCards(card);
     score++;
     console.log(`Score: ${score}`)
  }
+function checkCards(card) {
+    if(card1===''){
+        card1 = card;
+    } else {
+        card2 = card;
+    }
+    
+}
 
 // Array sort
 function compareCards() { 
