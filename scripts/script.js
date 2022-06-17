@@ -103,8 +103,15 @@ function cardRemover(){
 function endGame(){
     if (correctAmount === amount){
         alert(`Você ganhou em ${score} jogadas!`);
+
         let question = prompt('Jogar novamente? (Digite "sim" ou  "não")');
-        
+        console.log(question);
+
+        while( question!=="sim" && question !== "não"){
+            question = prompt('Jogar novamente? (Digite "sim" ou  "não")');
+            console.log(question);
+        }
+
         if (question === "sim"){
             gameStarter();
         }
