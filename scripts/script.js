@@ -6,8 +6,8 @@ const cardDeck = ["bobrossparrot","bobrossparrot",
                 "tripletsparrot","tripletsparrot",
                 "unicornparrot","unicornparrot"                                     
             ];
-const gifDeck = [];
-const cards = [];
+let gifDeck = [];
+let cards = [];
 let score;
 let scoreboard = document.querySelector("footer");
 let card1;
@@ -25,6 +25,8 @@ function gameStarter(){
     card2='.';
     correctAmount = 0;
     amount = 0;
+    gifDeck = [];
+    cards = [];
 
     // Asks amount of cards
     while(amount<4 || amount > 14 || amount%2 == 1 || isNaN(amount)) { 
@@ -60,11 +62,13 @@ function gameStarter(){
 
 // Turning cards
 function turn (card) { 
+    if (!card.classList.contains("front")){
     card.classList.add("front");
-    checkCards(card);
     score++;
     scoreboard.innerHTML = `SCORE: ${score}`;
+    checkCards(card);
     console.log(`Score: ${score}`)
+    }
  }
 
  // Checks if there are two turned cards, and checks if they are equal.
@@ -74,7 +78,37 @@ function checkCards(card) {
     } else {
         card2 = card;
     }
+    if (card1.classList[1] === card2.classList[1]){
+        console.log('Match!');
+        correctAmount +=2;
+        cardRemover()
+        endGame();
+    } else {
+        const myTimeOut = setTimeout(classRemover,1000);
+        const myTimeOut2 = setTimeout(cardRemover,1001);
+        console.log('Not a match');
+    }
+}
 
+function classRemover(){
+    card1.classList.remove("front");
+    card2.classList.remove("front");
+}
+
+function cardRemover(){
+    card1 = '';
+    card2 = '.';
+}
+
+function endGame(){
+    if (correctAmount === amount){
+        alert(`Você ganhou em ${score} jogadas!`);
+        let question = prompt('Jogar novamente? (Digite "sim" ou  "não")');
+        
+        if (question === "sim"){
+            gameStarter();
+        }
+    }
 }
 
 // Array sort
