@@ -9,11 +9,13 @@ const cardDeck = ["bobrossparrot","bobrossparrot",
 let gifDeck = [];
 let cards = [];
 let score;
-let scoreboard = document.querySelector("footer");
+let scoreboard = document.querySelector(".scoreboard");
 let card1;
 let card2;
 let amount;
 let correctAmount;
+let time;
+let timeboard = document.querySelector(".time");
 
 
 function gameStarter(){
@@ -56,6 +58,7 @@ function gameStarter(){
     score = 0;
     scoreboard.innerHTML = `SCORE: ${score}`;
     alert('Game Start!');
+    time = 0;
 }
 
 
@@ -102,7 +105,7 @@ function cardRemover(){
 
 function endGame(){
     if (correctAmount === amount){
-        alert(`Você ganhou em ${score} jogadas!`);
+        alert(`Você ganhou em ${score} jogadas! E levou apenas ${time} segundos!`);
 
         let question = prompt('Jogar novamente? (Digite "sim" ou  "não")');
         console.log(question);
@@ -122,5 +125,7 @@ function endGame(){
 function compareCards() { 
 	return Math.random() - 0.5; 
 }   
+
+setInterval(function() {timeboard.innerHTML =`TIME: ${time}`;time +=1}, 1000);
 
 gameStarter();
