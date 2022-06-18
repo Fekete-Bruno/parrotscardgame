@@ -6,7 +6,6 @@ const cardDeck = ["bobrossparrot","bobrossparrot",
                 "tripletsparrot","tripletsparrot",
                 "unicornparrot","unicornparrot"                                     
             ];
-let gifDeck = [];
 let cards = [];
 let score;
 let scoreboard = document.querySelector(".scoreboard");
@@ -16,18 +15,21 @@ let amount;
 let correctAmount;
 let time;
 let timeboard = document.querySelector(".time");
+let idInterval;
 
 
 function gameStarter(){
 
     // Resets everything for a new game
+
+    time = 0;
+    timeboard.innerHTML = `TIME: ${time}`;
     score = 0;
     scoreboard.innerHTML = `SCORE: ${score}`;
     card1='';
     card2='.';
     correctAmount = 0;
     amount = 0;
-    gifDeck = [];
     cards = [];
 
     // Asks amount of cards
@@ -55,10 +57,8 @@ function gameStarter(){
                             </div>
                         `;
     }
-    score = 0;
-    scoreboard.innerHTML = `SCORE: ${score}`;
     alert('Game Start!');
-    time = 0;
+    idInterval = setInterval(function() {timeboard.innerHTML =`TIME: ${time}`;time +=1}, 1000);
 }
 
 
@@ -87,8 +87,8 @@ function checkCards(card) {
         cardRemover()
         endGame();
     } else {
-        const myTimeOut = setTimeout(classRemover,1000);
-        const myTimeOut2 = setTimeout(cardRemover,1001);
+        setTimeout(classRemover,1000);
+        setTimeout(cardRemover,1001);
         console.log('Not a match');
     }
 }
@@ -105,7 +105,8 @@ function cardRemover(){
 
 function endGame(){
     if (correctAmount === amount){
-        alert(`Você ganhou em ${score} jogadas! E levou apenas ${time} segundos!`);
+        clearInterval(idInterval);
+        alert(`Você ganhou em ${score} jogadas! E levou apenas ${time-1} segundos!`);
 
         let question = prompt('Jogar novamente? (Digite "sim" ou  "não")');
         console.log(question);
@@ -125,7 +126,5 @@ function endGame(){
 function compareCards() { 
 	return Math.random() - 0.5; 
 }   
-
-setInterval(function() {timeboard.innerHTML =`TIME: ${time}`;time +=1}, 1000);
 
 gameStarter();

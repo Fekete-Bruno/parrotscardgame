@@ -68,7 +68,7 @@ footer{
         line-height: 66px;
     }
     .game-board{
-        width:90%;
+        width: 65vw;
         flex-direction:row;
         justify-content: center;
     }
